@@ -12,7 +12,7 @@ Este sistema em Go recebe um CEP, identifica a cidade correspondente e retorna o
 Você pode acessar o programa diretamente pelo endpoint publicado no Google Cloud Run:
 
 ```
-https://<seu-endpoint>.run.app
+https://go-postalcode-temperature-yo2u57iuna-uc.a.run.app/weather/:postalCode
 ```
 
 ### Rodar com Docker
@@ -20,8 +20,8 @@ https://<seu-endpoint>.run.app
 1. **Clone o repositório:**
 
    ```bash
-   git clone <URL_DO_REPOSITORIO>
-   cd <NOME_DO_REPOSITORIO>
+   git clone https://github.com/enermax626/go-postalcode-temperature
+   cd go-postalcode-temperature
    ```
 
 2. **Compile e rode a aplicação usando Docker:**
@@ -33,4 +33,4 @@ https://<seu-endpoint>.run.app
 
 3. **Acesse a aplicação localmente:**
 
-   Abra o navegador e vá para `http://localhost:8080`
+   Abra o navegador e vá para `http://localhost:8080/weather/:postalCode`
