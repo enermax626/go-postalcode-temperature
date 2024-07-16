@@ -5,6 +5,7 @@ import (
 	"github.com/enermax626/go-postalcode-temperature/internal/dto"
 	"github.com/enermax626/go-postalcode-temperature/internal/model"
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
 
@@ -39,7 +40,7 @@ func TestFindByPostalCodeWhenValidPostalCodeThenGetWeather(t *testing.T) {
 	weatherService := NewWeatherService(addressServiceMock, weatherDaoMock)
 
 	addressServiceMock.On("FindByPostalCode", postalCode).Return(expectedAddress, nil)
-	weatherDaoMock.On("FindByLocalidade", expectedAddress.Localidade).Return(expectedWeatherLocationResponse, nil)
+	weatherDaoMock.On("FindByLocalidade", strings.Replace(expectedAddress.Localidade, " ", "+", -1)).Return(expectedWeatherLocationResponse, nil)
 
 	weatherTemperatureResponse, err := weatherService.FindWeatherByPostalCode(postalCode)
 
