@@ -29,7 +29,11 @@ func (s *WeatherService) FindWeatherByPostalCode(postalCode string) (*dto.Weathe
 		return nil, err
 	}
 
-	weather, err := s.weatherDao.FindByLocalidade(address.Localidade)
+	normalizedLocalidade, err := NormalizeString(address.Localidade)
+	if err != nil {
+		return nil, err
+	}
+	weather, err := s.weatherDao.FindByLocalidade(normalizedLocalidade)
 	if err != nil {
 		return nil, err
 	}

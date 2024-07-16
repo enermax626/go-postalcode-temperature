@@ -1,0 +1,7 @@
+services:
+  postalcode-weather:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: postalcode-weather

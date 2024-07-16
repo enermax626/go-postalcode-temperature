@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/enermax626/go-postalcode-temperature/internal/dto"
+	"github.com/enermax626/go-postalcode-temperature/internal/model"
 	"io"
 	"log"
 	"net/http"
@@ -35,6 +36,10 @@ func (s *WeatherDao) FindByLocalidade(localidade string) (*dto.WeatherLocationRe
 	response, err := s.client.Get(fmt.Sprintf(WeatherBaseUrl+"/v1/current.json?q=%s&key=%s", localidade, WeatherAPIKey))
 	if err != nil {
 		return nil, err
+	}
+
+	if response.StatusCode != http.StatusOK {
+		return nil, model.ErrPostalCodeNotFound
 	}
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()

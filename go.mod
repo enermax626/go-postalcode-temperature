@@ -5,6 +5,7 @@ go 1.22.4
 require (
 	github.com/stretchr/testify v1.9.0
 	github.com/valyala/fastjson v1.6.4
+	golang.org/x/text v0.16.0
 )
 
 require (
